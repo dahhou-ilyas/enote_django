@@ -6,27 +6,6 @@ from .serialazer import NoteSerializer
 
 
 
-from rest_framework.views import APIView
-
-from rest_framework.permissions import AllowAny
-# Create your views here.
-
-
-
-class MyModelAPIView(APIView):
-    permission_classes = [AllowAny]
-    
-    http_method_names = ['get', 'post']
-    
-    
-
-    def post(self, request):
-        data = request.data
-        note = Note.objects.create(
-            body=data['body']
-        )
-        serializer = NoteSerializer(note, many=False)
-        return Response(serializer.data)
 
 
 @api_view(['GET'])
@@ -126,4 +105,16 @@ def deleteNote(request,pk):
     
     return Response('note was deleted')
     
-    
+@api_view(['POST'])  
+def test(request):
+    data = request.data
+    note = Note.objects.create(
+        body=data['body']
+    )
+    serializer = NoteSerializer(note, many=False)
+    return Response(serializer.data)
+
+@api_view(['GET'])  
+def test2(request):
+    print("eeeeee")
+    return Response('eeeeeeee')

@@ -18,24 +18,25 @@ const NotePage = ({ match, history }) => {
     let getNote = async () => {
         if (id === 'new') return
 
-        let response = await fetch(`/api/notes/${id}/`)
+        let response = await fetch(`http://localhost:8000/api/notes/${id}/`)
         let data = await response.json()
         setNote(data)
     }
 
-    let createNote = async () => {
-        fetch(`/api/notes/create/`, {
-            method: "POST",
+    function createNote() {
+        fetch('http://localhost:8000/api/tes/', {
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(note)
         })
+        navigate('/')
     }
 
     let updateNote = async () => {
         
-        fetch(`/api/notes/${id}/update/`, {
+        fetch(`http://localhost:8000/api/notes/${id}/update/`, {
             method: "PUT",
             headers: {
                 'Content-Type': 'application/json'
@@ -46,7 +47,7 @@ const NotePage = ({ match, history }) => {
     }
 
     let deleteNote = async () => {
-        fetch(`/api/notes/${id}/delete/`, {
+        fetch(`http://localhost:8000/api/notes/${id}/delete/`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
@@ -73,6 +74,20 @@ const NotePage = ({ match, history }) => {
         console.log('Handle Change:', note)
     }
 
+    // function test(){
+    //     fetch(`http://localhost:8000/api/tes2`, {
+    //         method: 'GET',
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         }
+    //     }).then(res=>{
+    //         res.json().then(data=>{
+    //             console.log(data);
+    //         })
+    //     })
+    //     navigate('/')
+    // }
+    
   return (
     <div className="note" >
         <div className="note-header">
@@ -82,7 +97,9 @@ const NotePage = ({ match, history }) => {
             {id !== 'new' ? (
                 <button onClick={deleteNote}>Delete</button>
             ) : (
-                <button onClick={handleSubmit}>Done</button>
+
+                <button onClick={createNote}>Done</button>
+                
             )}
 
         </div>
