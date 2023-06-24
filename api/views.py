@@ -3,8 +3,30 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from .models import Note
 from .serialazer import NoteSerializer
+
+
+
+from rest_framework.views import APIView
+
+from rest_framework.permissions import AllowAny
 # Create your views here.
 
+
+
+class MyModelAPIView(APIView):
+    permission_classes = [AllowAny]
+    
+    http_method_names = ['get', 'post']
+    
+    
+
+    def post(self, request):
+        data = request.data
+        note = Note.objects.create(
+            body=data['body']
+        )
+        serializer = NoteSerializer(note, many=False)
+        return Response(serializer.data)
 
 
 @api_view(['GET'])
@@ -57,6 +79,29 @@ def getNote(request ,pk):
     return Response(serializerNote.data)
 
 
+# @api_view(['POST'])
+# def createNote(request):
+    
+#     print(request.method)
+#     data=request.data
+#     notes=Note.objects.create(
+#         body=data['body']
+#     )
+    
+#     serializerNote=NoteSerializer(notes,many=False)
+#     return Response(serializerNote.data)
+
+# @api_view(['POST'])
+# def createNote(request):
+#     data = request.data
+#     note = Note.objects.create(
+#         body=data['body']
+#     )
+#     serializer = NoteSerializer(note, many=False)
+#     return Response(serializer.data)
+
+
+
 @api_view(['PUT'])
 def updateNote(request,pk):
     data=request.data
@@ -80,4 +125,5 @@ def deleteNote(request,pk):
     
     
     return Response('note was deleted')
+    
     
