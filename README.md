@@ -45,4 +45,17 @@ cd frontend
 ```bash
 npm install
 ```
+#
 
+### Running the App
+
+--> in root directory run:
+```bash
+python manage.py runserver
+```
+
+--> in in frontend folder run :
+```bash
+npm start
+```
+> ⚠ Then, the development server will be started at http://127.0.0.1:3000/
