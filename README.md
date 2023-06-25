@@ -64,7 +64,7 @@ npm start
 ### App Preview :
 
 <div align="center">
-<img width="50%" src="https://www.linkpicture.com/view.php?img=LPic649843eedbc0a1465880000"/>
+<img width="50%" src="https://github.com/dahhou-ilyas/enote_django/blob/master/frontend/src/assets/app.jpg"/>
 </div>
 
 #
