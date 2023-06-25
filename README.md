@@ -54,6 +54,14 @@ npm install
 python manage.py runserver
 ```
 
+### App Preview :
+
+<div align="center">
+<img width="50%" src="[https://www.linkpicture.com/q/Notes.png](https://www.linkpicture.com/view.php?img=LPic649843eedbc0a1465880000)"/>
+</div>
+
+#
+
 --> in in frontend folder run :
 ```bash
 npm start
